@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 48e3c662a6a8d43a1b8ae9f6558aea25
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {instanceID: 0}
+  PrefabOptions:
+    UnloadPrefabOnReleasingLastInstance: 0
+    UnloadUnusedPrefabsOnShutdown: 0

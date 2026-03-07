@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>894579338771-6luk0vhbvrhnm8dh4d5et14uos75r509.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.894579338771-6luk0vhbvrhnm8dh4d5et14uos75r509</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>894579338771-315150upttotevbm7085pmoidukr6028.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA58EpN2MG2-ez558G2WE1qx26wYJZR5YY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>894579338771</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ghostchillies.testapp</string>
+	<key>PROJECT_ID</key>
+	<string>testiap-97815431</string>
+	<key>STORAGE_BUCKET</key>
+	<string>testiap-97815431.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:894579338771:ios:5d4613958a0b93e48859e6</string>
+	<key>DATABASE_URL</key>
+	<string>https://testiap-97815431.firebaseio.com</string>
+</dict>
+</plist>
