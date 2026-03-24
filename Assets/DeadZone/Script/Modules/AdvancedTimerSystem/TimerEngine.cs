@@ -1,42 +1,49 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 using UntiyUtils.LowLevel;
-using UnityEditor;
 
-namespace  ImprovedTimers
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace ImprovedTimers
 {
     internal static class TimerBootStraper
     {
         private static PlayerLoopSystem timerSystem;
-        
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         internal static void Initialize()
         {
             PlayerLoopSystem currentPlayerloop = PlayerLoop.GetCurrentPlayerLoop();
             if (!InsertTimerManager<Update>(ref currentPlayerloop, 0))
             {
-                Debug.LogWarning("Timer System not Iniitiallized, failed to insert into PlayerLoop");
-                 return;
+                Debug.LogWarning("Timer System not Initialized, failed to insert into PlayerLoop");
+                return;
             }
             PlayerLoop.SetPlayerLoop(currentPlayerloop);
             PlayerLoopUtils.PrintPlayerLoop(currentPlayerloop);
-            #if UNITY_EDITOR
-            EditorApplication.playModeStateChanged-= OnPlayModeStateChanged;
-            EditorApplication.playModeStateChanged+= OnPlayModeStateChanged;
-            #endif
-            static void OnPlayModeStateChanged(PlayModeStateChange state)
+
+#if UNITY_EDITOR
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+#endif
+        }
+
+#if UNITY_EDITOR
+        static void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingPlayMode)
             {
-                if (state == PlayModeStateChange.ExitingPlayMode)
-                {
-                    PlayerLoopSystem currentPlayerloop = PlayerLoop.GetCurrentPlayerLoop();
-                    RemoveTimerManager<Update>(ref currentPlayerloop);
-                    PlayerLoop.SetPlayerLoop(currentPlayerloop);
-                    TimerManager.Clear();
-                }
+                PlayerLoopSystem currentPlayerloop = PlayerLoop.GetCurrentPlayerLoop();
+                RemoveTimerManager<Update>(ref currentPlayerloop);
+                PlayerLoop.SetPlayerLoop(currentPlayerloop);
+                TimerManager.Clear();
             }
         }
+#endif
+
         static void RemoveTimerManager<T>(ref PlayerLoopSystem loop)
         {
             PlayerLoopUtils.RemoveSystem<T>(ref loop, timerSystem);
@@ -51,8 +58,6 @@ namespace  ImprovedTimers
                 subSystemList = null
             };
             return PlayerLoopUtils.InsertSystem<T>(ref loop, in timerSystem, index);
-
         }
-        
     }
 }
